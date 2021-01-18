@@ -65,20 +65,23 @@ idrisTests = MkTestPool []
        "interactive005", "interactive006", "interactive007", "interactive008",
        "interactive009", "interactive010", "interactive011", "interactive012",
        "interactive013", "interactive014", "interactive015", "interactive016",
-       "interactive017", "interactive018",
+       "interactive017", "interactive018", "interactive019",
        -- Interfaces
        "interface001", "interface002", "interface003", "interface004",
        "interface005", "interface006", "interface007", "interface008",
        "interface009", "interface010", "interface011", "interface012",
        "interface013", "interface014", "interface015", "interface016",
        "interface017", "interface018", "interface019", "interface020",
+       "interface021",
        -- Miscellaneous REPL
        "interpreter001", "interpreter002", "interpreter003", "interpreter004",
-       "interpreter005",
+       "interpreter005", "interpreter006",
        -- Implicit laziness, lazy evaluation
        "lazy001",
        -- QTT and linearity related
-       "linear001", "linear002", "linear003", "linear004", "linear005",
+       "linear001", "linear002", "linear003",
+       -- "linear004" -- disabled due to requiring linearity subtyping
+       "linear005",
        "linear006", "linear007", "linear008", "linear009", "linear010",
        "linear011", "linear012",
        -- Literate
@@ -142,6 +145,10 @@ chezTests = MkTestPool [Chez]
       "perf001",
       "reg001"]
 
+racketTests : TestPool
+racketTests = MkTestPool [Racket]
+    ["concurrency001"]
+
 nodeTests : TestPool
 nodeTests = MkTestPool [Node]
     [ "node001", "node002", "node003", "node004", "node005", "node006", "node007", "node008", "node009"
@@ -173,6 +180,7 @@ main = runner
   , testPaths "ideMode" ideModeTests
   , testPaths "prelude" preludeTests
   , testPaths "chez" chezTests
+  , testPaths "racket" racketTests
   , testPaths "node" nodeTests
   , testPaths "templates" templateTests
   ] where

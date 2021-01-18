@@ -9,8 +9,8 @@ TARGETDIR = build/exec
 TARGET = ${TARGETDIR}/${NAME}
 
 MAJOR=0
-MINOR=2
-PATCH=1
+MINOR=3
+PATCH=0
 
 
 GIT_SHA1=
@@ -83,6 +83,9 @@ testbin:
 	@${MAKE} -C tests testbin
 
 test:
+	@echo
+	@echo "NOTE: \`${MAKE} test\` does not rebuild idris; to do that run \`${MAKE}\`"
+	@echo
 	@${MAKE} -C tests only=$(only) IDRIS2=../../../${TARGET}
 
 support:
